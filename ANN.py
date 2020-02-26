@@ -9,18 +9,55 @@ Last updated on 21/02/2020
 Modified by Kyle Hogg to have multipul hidden layers and make chainging variables easier
 """
 # Imports
-import numpy as np 
-      
+import numpy as np
+import csv
+
+def defineOutput(outputNames):
+    numOfOutputs = len(set(outputNames))
+    outputNames = set(outputNames)
+    outputArray = [None]*numOfOutputs
+    for index, names in enumerate(outputNames):
+        outputArray[index] = ([0]*numOfOutputs)
+    for index, output in enumerate(outputNames):
+        for jndex, zero in enumerate(outputArray):
+            outputArray[index][jndex] = (1 if (index+1)/(jndex+1) == 1 else 0)
+    return outputArray
+
+
+
 # Each row is a training example, each column is a feature  [X1, X2, X3]
 X=np.array(([0,0,1],[0,1,1],[1,0,1],[1,1,1]), dtype=float)
 y=np.array(([0,1],[1,0],[1,0],[0,1]), dtype=float) #expected outputs
+#csv reader.
+    #read the csv file
+with open('IRIS.csv', newline='') as csvfile:
+    datasetReader = csv.reader(csvfile, delimiter=',', quotechar='|')
+    data = [row for row in datasetReader]
+
+#strip data
+output = [data[index][4] for index, name in enumerate(data)]
+output = output[1:] # get ride of top labels
+output = [name for name in set(output)]#remove duplicates
+
+outputId = defineOutput(output)#set every output to a id
+data = data[1:]#remove label row
+
+# replace output with a output Id
+for index, name in enumerate(data):
+    for jndex, id in enumerate(outputId):
+        data[index][4] = outputId[jndex] if data[index][4] == output[jndex] else  data[index][4]
+
+
+'''
+    #highest number (greater than 0) is use to divide the dataset
+    #if there are negative numbers add everything but the largest negative numbers
+    #change all output to number array of 1, 0
 
 # Varibals for number of nodes
-epocs = 20000
+epocs = 5000
 #array with each element being the number of nodes in each layer and the number of elements being the number of layers plus the output layer
-hiddenLayers=np.array((1,2,y.shape[1]))
-
-# Define useful functions    
+hiddenLayers=np.array((2,2,y.shape[1]))
+# Define useful functions
 
 # Activation function
 def sigmoid(t):
@@ -40,25 +77,25 @@ class NeuralNetwork:
         for x in range(0,(hiddenLayers.size)-1):
             self.weights.append(np.random.rand(hiddenLayers[x],hiddenLayers[x+1]))
         self.output = np. zeros(hiddenLayers[2])
-		
+
     def feedforward(self):
         self.layers = []
         self.layers.append(sigmoid(np.dot(self.input, self.weights[0])))
         for i in range(0,(hiddenLayers.size)-1):
             self.layers.append(sigmoid(np.dot(self.layers[i], self.weights[i+1])))
         return self.layers[(hiddenLayers.size)-1]
-        
+
     def backprop(self):
     #output layer weights
         d_weightsa = 2*(self.y -self.output)*sigmoid_derivative(self.output)
         d_weights3 = np.dot(self.layers[1].T, d_weightsa)
-    #2nd Hidden node layer weights    
+    #2nd Hidden node layer weights
         d_weightsa = np.dot(d_weightsa, self.weights[2].T)*sigmoid_derivative(self.layers[1])
         d_weights2 = np.dot(self.layers[0].T, d_weightsa)
     #1st Hidden node layer weights
         d_weightsa = np.dot(d_weightsa, self.weights[1].T)*sigmoid_derivative(self.layers[0])
         d_weights1 = np.dot(self.input.T, d_weightsa)
-    
+
     #saving the weights)
         self.weights[0] += d_weights1
         self.weights[1] += d_weights2
@@ -67,17 +104,18 @@ class NeuralNetwork:
     def train(self, X, y):
         self.output = self.feedforward()
         self.backprop()
-        
+
 
 NN = NeuralNetwork(X,y)
 for i in range(epocs): # trains the NN x times
-    
-    if i % (2000) ==0: 
+
+    if i % (2000) ==0:
         print ("for iteration # " + str(i) + "\n")
         print ("Input : \n" + str(X))
         print ("Actual Output: \n" + str(y))
         print ("Predicted Output: \n" + str(NN.feedforward()))
         print ("Loss: \n" + str(np.mean(np.square(y - NN.feedforward())))) # mean sum squared loss
         print ("\n")
-  
+
     NN.train(X, y)
+'''
