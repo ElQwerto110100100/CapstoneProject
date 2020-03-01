@@ -12,7 +12,6 @@ Kyle Hogg - 26/02/2020 - Make number of hidden nodes and layers as a variable.
 
 """
 # Imports
-<<<<<<< HEAD
 import numpy as np
 import csv
 
@@ -27,11 +26,6 @@ def defineOutput(outputNames):
             outputArray[index][jndex] = (1 if (index+1)/(jndex+1) == 1 else 0)
     return outputArray
 
-=======
-import numpy as np 
-#import clpy as cp 
-      
->>>>>>> 9754986cf52aacbdc5d440bc999ecb908669a198
 # Each row is a training example, each column is a feature  [X1, X2, X3]
 X=np.array(([0,0,1],[0,1,1],[1,0,1],[1,1,1]), dtype=float)
 y=np.array(([0,1],[1,0],[1,0],[0,1]), dtype=float) #expected outputs
@@ -107,7 +101,7 @@ class NeuralNetwork:
 
 >>>>>>> 9754986cf52aacbdc5d440bc999ecb908669a198
 =======
-		
+
 >>>>>>> 9754986cf52aacbdc5d440bc999ecb908669a198
     def feedforward(self):
         self.layers = []
@@ -141,10 +135,10 @@ class NeuralNetwork:
         self.weights[2] += d_weights3
 =======
 =======
-	
+
     def backprop(self):
-        
-    #output layer weights	
+
+    #output layer weights
         d_weightsb = []
         d_weightsa = 2*(self.y -self.output)*sigmoid_derivative(self.output)
 >>>>>>> 9754986cf52aacbdc5d440bc999ecb908669a198
@@ -159,7 +153,7 @@ class NeuralNetwork:
             self.weights[i] += d_weightsb[((len(self.weights)-1)-i)]
 >>>>>>> 9754986cf52aacbdc5d440bc999ecb908669a198
 =======
-        
+
     # #saving the weights)
         for i in range(0, len(self.weights)):
             self.weights[i] += d_weightsb[((len(self.weights)-1)-i)]
@@ -181,8 +175,8 @@ for i in range(epocs): # trains the NN x times
     if i % (epocs/10) ==0:
 >>>>>>> 9754986cf52aacbdc5d440bc999ecb908669a198
 =======
-    
-    if i % (epocs/10) ==0: 
+
+    if i % (epocs/10) ==0:
 >>>>>>> 9754986cf52aacbdc5d440bc999ecb908669a198
         print ("for iteration # " + str(i) + "\n")
         print ("Input : \n" + str(X))
