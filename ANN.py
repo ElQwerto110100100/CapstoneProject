@@ -12,6 +12,7 @@ Kyle Hogg - 26/02/2020 - Make number of hidden nodes and layers as a variable.
 
 """
 # Imports
+<<<<<<< HEAD
 import numpy as np
 import csv
 
@@ -26,6 +27,11 @@ def defineOutput(outputNames):
             outputArray[index][jndex] = (1 if (index+1)/(jndex+1) == 1 else 0)
     return outputArray
 
+=======
+import numpy as np 
+#import clpy as cp 
+      
+>>>>>>> 9754986cf52aacbdc5d440bc999ecb908669a198
 # Each row is a training example, each column is a feature  [X1, X2, X3]
 X=np.array(([0,0,1],[0,1,1],[1,0,1],[1,1,1]), dtype=float)
 y=np.array(([0,1],[1,0],[1,0],[0,1]), dtype=float) #expected outputs
@@ -58,9 +64,12 @@ for index, name in enumerate(data):
 epocs = 5000
 #array with each element being the number of nodes in each layer and the number of elements being the number of layers plus the output layer
 <<<<<<< HEAD
+<<<<<<< HEAD
 hiddenLayers=np.array((2,2,y.shape[1]))
 # Define useful functions
 =======
+=======
+>>>>>>> 9754986cf52aacbdc5d440bc999ecb908669a198
 hiddenLayers=np.array((3,2,y.shape[1]))
 
 # Define useful functions
@@ -82,16 +91,23 @@ class NeuralNetwork:
         self.weights = []
         self.weights.append(np.random.rand(self.input.shape[1],hiddenLayers[0])) # considering we have 4 nodes in the hidden layer
 <<<<<<< HEAD
+<<<<<<< HEAD
         for x in range(0,(hiddenLayers.size)-1):
             self.weights.append(np.random.rand(hiddenLayers[x],hiddenLayers[x+1]))
         self.output = np. zeros(hiddenLayers[2])
 
 =======
+=======
+>>>>>>> 9754986cf52aacbdc5d440bc999ecb908669a198
         for i in range(0,(hiddenLayers.size)-1):
             self.weights.append(np.random.rand(hiddenLayers[i],hiddenLayers[i+1]))
             j=i
         self.output = np. zeros(hiddenLayers[j+1])
+<<<<<<< HEAD
 
+>>>>>>> 9754986cf52aacbdc5d440bc999ecb908669a198
+=======
+		
 >>>>>>> 9754986cf52aacbdc5d440bc999ecb908669a198
     def feedforward(self):
         self.layers = []
@@ -99,6 +115,7 @@ class NeuralNetwork:
         for i in range(0,(hiddenLayers.size)-1):
             self.layers.append(sigmoid(np.dot(self.layers[i], self.weights[i+1])))
         return self.layers[(hiddenLayers.size)-1]
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 =======
@@ -123,11 +140,26 @@ class NeuralNetwork:
         self.weights[1] += d_weights2
         self.weights[2] += d_weights3
 =======
+=======
+	
+    def backprop(self):
+        
+    #output layer weights	
+        d_weightsb = []
+        d_weightsa = 2*(self.y -self.output)*sigmoid_derivative(self.output)
+>>>>>>> 9754986cf52aacbdc5d440bc999ecb908669a198
         for i in range((hiddenLayers.size -1), 0, -1):
             d_weightsb.append(np.dot(self.layers[i-1].T, d_weightsa))
             d_weightsa = np.dot(d_weightsa, self.weights[i].T)*sigmoid_derivative(self.layers[i-1])
         d_weightsb.append(np.dot(self.input.T, d_weightsa))
+<<<<<<< HEAD
 
+    # #saving the weights)
+        for i in range(0, len(self.weights)):
+            self.weights[i] += d_weightsb[((len(self.weights)-1)-i)]
+>>>>>>> 9754986cf52aacbdc5d440bc999ecb908669a198
+=======
+        
     # #saving the weights)
         for i in range(0, len(self.weights)):
             self.weights[i] += d_weightsb[((len(self.weights)-1)-i)]
@@ -141,11 +173,16 @@ class NeuralNetwork:
 NN = NeuralNetwork(X,y)
 for i in range(epocs): # trains the NN x times
 <<<<<<< HEAD
+<<<<<<< HEAD
 
     if i % (2000) ==0:
 =======
 
     if i % (epocs/10) ==0:
+>>>>>>> 9754986cf52aacbdc5d440bc999ecb908669a198
+=======
+    
+    if i % (epocs/10) ==0: 
 >>>>>>> 9754986cf52aacbdc5d440bc999ecb908669a198
         print ("for iteration # " + str(i) + "\n")
         print ("Input : \n" + str(X))
