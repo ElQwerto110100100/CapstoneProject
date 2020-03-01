@@ -6,7 +6,10 @@ Created on Tuesday Oct 2, 2018
 https://gist.github.com/jamesloyys/ff7a7bb1540384f709856f9cdcdee70d#file-neural_network_backprop-py
 
 Last updated on 21/02/2020
-Modified by Kyle Hogg to have multipul hidden layers and make chainging variables easier
+
+Change log
+Kyle Hogg - 26/02/2020 - Make number of hidden nodes and layers as a variable.
+
 """
 # Imports
 import numpy as np
@@ -22,8 +25,6 @@ def defineOutput(outputNames):
         for jndex, zero in enumerate(outputArray):
             outputArray[index][jndex] = (1 if (index+1)/(jndex+1) == 1 else 0)
     return outputArray
-
-
 
 # Each row is a training example, each column is a feature  [X1, X2, X3]
 X=np.array(([0,0,1],[0,1,1],[1,0,1],[1,1,1]), dtype=float)
@@ -47,8 +48,8 @@ for index, name in enumerate(data):
     for jndex, id in enumerate(outputId):
         data[index][4] = outputId[jndex] if data[index][4] == output[jndex] else  data[index][4]
 
+#def createIOarrays:
 
-'''
     #highest number (greater than 0) is use to divide the dataset
     #if there are negative numbers add everything but the largest negative numbers
     #change all output to number array of 1, 0
@@ -56,8 +57,14 @@ for index, name in enumerate(data):
 # Varibals for number of nodes
 epocs = 5000
 #array with each element being the number of nodes in each layer and the number of elements being the number of layers plus the output layer
+<<<<<<< HEAD
 hiddenLayers=np.array((2,2,y.shape[1]))
 # Define useful functions
+=======
+hiddenLayers=np.array((3,2,y.shape[1]))
+
+# Define useful functions
+>>>>>>> 9754986cf52aacbdc5d440bc999ecb908669a198
 
 # Activation function
 def sigmoid(t):
@@ -74,20 +81,35 @@ class NeuralNetwork:
         self.y = y
         self.weights = []
         self.weights.append(np.random.rand(self.input.shape[1],hiddenLayers[0])) # considering we have 4 nodes in the hidden layer
+<<<<<<< HEAD
         for x in range(0,(hiddenLayers.size)-1):
             self.weights.append(np.random.rand(hiddenLayers[x],hiddenLayers[x+1]))
         self.output = np. zeros(hiddenLayers[2])
 
+=======
+        for i in range(0,(hiddenLayers.size)-1):
+            self.weights.append(np.random.rand(hiddenLayers[i],hiddenLayers[i+1]))
+            j=i
+        self.output = np. zeros(hiddenLayers[j+1])
+
+>>>>>>> 9754986cf52aacbdc5d440bc999ecb908669a198
     def feedforward(self):
         self.layers = []
         self.layers.append(sigmoid(np.dot(self.input, self.weights[0])))
         for i in range(0,(hiddenLayers.size)-1):
             self.layers.append(sigmoid(np.dot(self.layers[i], self.weights[i+1])))
         return self.layers[(hiddenLayers.size)-1]
+<<<<<<< HEAD
 
+=======
+
+>>>>>>> 9754986cf52aacbdc5d440bc999ecb908669a198
     def backprop(self):
+
     #output layer weights
+        d_weightsb = []
         d_weightsa = 2*(self.y -self.output)*sigmoid_derivative(self.output)
+<<<<<<< HEAD
         d_weights3 = np.dot(self.layers[1].T, d_weightsa)
     #2nd Hidden node layer weights
         d_weightsa = np.dot(d_weightsa, self.weights[2].T)*sigmoid_derivative(self.layers[1])
@@ -100,6 +122,16 @@ class NeuralNetwork:
         self.weights[0] += d_weights1
         self.weights[1] += d_weights2
         self.weights[2] += d_weights3
+=======
+        for i in range((hiddenLayers.size -1), 0, -1):
+            d_weightsb.append(np.dot(self.layers[i-1].T, d_weightsa))
+            d_weightsa = np.dot(d_weightsa, self.weights[i].T)*sigmoid_derivative(self.layers[i-1])
+        d_weightsb.append(np.dot(self.input.T, d_weightsa))
+
+    # #saving the weights)
+        for i in range(0, len(self.weights)):
+            self.weights[i] += d_weightsb[((len(self.weights)-1)-i)]
+>>>>>>> 9754986cf52aacbdc5d440bc999ecb908669a198
 
     def train(self, X, y):
         self.output = self.feedforward()
@@ -108,8 +140,13 @@ class NeuralNetwork:
 
 NN = NeuralNetwork(X,y)
 for i in range(epocs): # trains the NN x times
+<<<<<<< HEAD
 
     if i % (2000) ==0:
+=======
+
+    if i % (epocs/10) ==0:
+>>>>>>> 9754986cf52aacbdc5d440bc999ecb908669a198
         print ("for iteration # " + str(i) + "\n")
         print ("Input : \n" + str(X))
         print ("Actual Output: \n" + str(y))
@@ -118,4 +155,3 @@ for i in range(epocs): # trains the NN x times
         print ("\n")
 
     NN.train(X, y)
-'''
