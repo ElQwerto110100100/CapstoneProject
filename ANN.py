@@ -24,26 +24,31 @@ def defineOutput(outputNames):
             outputArray[index][jndex] = (1 if (index+1)/(jndex+1) == 1 else 0)
     return outputArray
 
-    #csv reader.
+def createIOarrays(data):
+    
     #read the csv file
-with open('IRIS.csv', newline='') as csvfile:
-    datasetReader = csv.reader(csvfile, delimiter=',', quotechar='|')
-    data = [row for row in datasetReader]
-#strip data
-output = [data[index][4] for index, name in enumerate(data)]
-output = output[1:] # get ride of top labels
-output = [name for name in set(output)]#remove duplicates
-outputId = defineOutput(output)#set every output to a id
-data = data[1:]#remove label row
-# replace output with a output Id
-for index, name in enumerate(data):
-    for jndex, id in enumerate(outputId):
-        data[index][4] = outputId[jndex] if data[index][4] == output[jndex] else  data[index][4]
-#def createIOarrays:
+def csvReader(fname):
+    with open(fname, newline='') as csvfile:
+        datasetReader = csv.reader(csvfile, delimiter=',', quotechar='|')
+        data = [row for row in datasetReader]
+    #strip data
+    output = [data[index][4] for index, name in enumerate(data)]
+    output = output[1:] # get ride of top labels
+    output = [name for name in set(output)]#remove duplicates
+    outputId = defineOutput(output)#set every output to a id
+    data = data[1:]#remove label row
+    # replace output with a output Id
+    for index, name in enumerate(data):
+        for jndex, id in enumerate(outputId):
+            data[index][4] = outputId[jndex] if data[index][4] == output[jndex] else  data[index][4]
+
+    createIOarrays(data)
+
+csvReader("IRIS.csv")
     #highest number (greater than 0) is use to divide the dataset
     #if there are negative numbers add everything but the largest negative numbers
     #change all output to number array of 1, 0
-
+"""
 # Each row is a training example, each column is a feature  [X1, X2, X3]
 X=np.array(([0,0,1],[0,1,1],[1,0,1],[1,1,1]), dtype=float)
 y=np.array(([0,1],[1,0],[1,0],[0,1]), dtype=float) #expected outputs
@@ -113,3 +118,4 @@ for i in range(epocs): # trains the NN x times
         print ("\n")
 
     NN.train(X, y)
+"""
