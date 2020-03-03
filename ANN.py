@@ -29,16 +29,19 @@ def defineOutput(outputNames):
 with open('IRIS.csv', newline='') as csvfile:
     datasetReader = csv.reader(csvfile, delimiter=',', quotechar='|')
     data = [row for row in datasetReader]
+
 #strip data
 output = [data[index][4] for index, name in enumerate(data)]
 output = output[1:] # get ride of top labels
 output = [name for name in set(output)]#remove duplicates
 outputId = defineOutput(output)#set every output to a id
 data = data[1:]#remove label row
+
 # replace output with a output Id
 for index, name in enumerate(data):
     for jndex, id in enumerate(outputId):
         data[index][4] = outputId[jndex] if data[index][4] == output[jndex] else  data[index][4]
+        
 #def createIOarrays:
     #highest number (greater than 0) is use to divide the dataset
     #if there are negative numbers add everything but the largest negative numbers
