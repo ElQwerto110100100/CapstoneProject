@@ -13,6 +13,7 @@ Kyle Hogg - 26/02/2020 - Make number of hidden nodes and layers as a variable.
 import numpy as np
 import csv
 
+#change all output to number array of 1, 0
 def defineOutput(outputNames):
     numOfOutputs = len(set(outputNames))
     outputNames = set(outputNames)
@@ -26,7 +27,7 @@ def defineOutput(outputNames):
 
     #highest number (greater than 0) is use to divide the dataset
     #if there are negative numbers add everything but the largest negative numbers
-    #change all output to number array of 1, 0
+
 def NormilizeData(data):
     maxNum = 0.0
     minNum = 0.0
