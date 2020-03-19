@@ -24,8 +24,56 @@ def defineOutput(outputNames):
             outputArray[index][jndex] = (1 if (index+1)/(jndex+1) == 1 else 0)
     return outputArray
 
-def createIOarrays(data):
-    
+    #highest number (greater than 0) is use to divide the dataset
+    #if there are negative numbers add everything but the largest negative numbers
+    #change all output to number array of 1, 0
+def NormilizeData(data):
+    maxNum = 0.0
+    minNum = 0.0
+
+    #find largest negative number
+    for listItem in data:
+        for item in listItem:
+            try:
+                compar = float(item)
+                if compar < minNum:
+                    minNum = compar
+            except:
+                #if it checks th id, pass
+                pass
+
+    # add every number by that negative
+    if minNum < 0:
+        for index, listItem in enumerate(data):
+            for jndex, item in enumerate(listItem):
+                try:
+                    compar = float(item)
+                    data[index][jndex] = compar - minNum
+                except:
+                    pass
+
+#find largest positive number
+    for listItem in data:
+        for item in listItem:
+            try:
+                compar = float(item)
+                if compar > maxNum:
+                    maxNum = compar
+            except:
+                #if it checks th id, pass
+                pass
+
+    #normilize dataset
+    for index, listItem in enumerate(data):
+        for jndex, item in enumerate(listItem):
+            try:
+                compar = float(item)
+                data[index][jndex] = compar / maxNum
+            except:
+                pass
+
+    for i in data:
+        print(i)
     #read the csv file
 def csvReader(fname):
     with open(fname, newline='') as csvfile:
@@ -42,12 +90,10 @@ def csvReader(fname):
         for jndex, id in enumerate(outputId):
             data[index][4] = outputId[jndex] if data[index][4] == output[jndex] else  data[index][4]
 
-    createIOarrays(data)
+    NormilizeData(data)
 
 csvReader("IRIS.csv")
-    #highest number (greater than 0) is use to divide the dataset
-    #if there are negative numbers add everything but the largest negative numbers
-    #change all output to number array of 1, 0
+
 """
 # Each row is a training example, each column is a feature  [X1, X2, X3]
 X=np.array(([0,0,1],[0,1,1],[1,0,1],[1,1,1]), dtype=float)
