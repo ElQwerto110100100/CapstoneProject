@@ -95,7 +95,6 @@ def csvReader(fname):
 
 csvReader("IRIS.csv")
 
-"""
 # Each row is a training example, each column is a feature  [X1, X2, X3]
 X=np.array(([0,0,1],[0,1,1],[1,0,1],[1,1,1]), dtype=float)
 y=np.array(([0,1],[1,0],[1,0],[0,1]), dtype=float) #expected outputs
@@ -165,4 +164,3 @@ for i in range(epocs): # trains the NN x times
         print ("\n")
 
     NN.train(X, y)
-"""
