@@ -92,7 +92,6 @@ def csvReader(fname):
     return data, outputId
 
 dataset, outputId = csvReader("IRIS.csv")
-
 #split the data in half for training and testing
 TrainDataset = [element for index, element in enumerate(dataset) if index % 2 == 0]
 TestDataset = [element for index, element in enumerate(dataset) if index % 2 == 1]
@@ -101,6 +100,9 @@ TestDataset = [element for index, element in enumerate(dataset) if index % 2 == 
 TrainDatasetOutput = [element[-1] for element in TrainDataset]
 TestDatasetOutput = [element[-1] for element in TestDataset]
 
+#remoce the output from the traning dataset
+TrainDataset = [row[0:len(row) - 1] for row in TrainDataset]
+
 # Each row is a training example, each column is a feature  [X1, X2, X3]
 Xtrain=np.array(TrainDataset)
 Ytrain=np.array(TrainDatasetOutput) #expected outputs
@@ -108,9 +110,6 @@ Ytrain=np.array(TrainDatasetOutput) #expected outputs
 Xtest=np.array(TestDataset)
 Ytest=np.array(TestDatasetOutput)
 
-#remoce the output from the traning dataset
-Xtrain = np.delete(Xtrain, -1, axis=1)
-#Xtest = np.delete(Xtest, -1, axis=1)
 # Varibals for number of nodes
 epocs = 20000
 #array with each element being the number of nodes in each layer and the number of elements being the number of layers plus the output layer
