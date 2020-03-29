@@ -104,16 +104,18 @@ TestDatasetOutput = [element[-1] for element in TestDataset]
 TrainDataset = [row[0:len(row) - 1] for row in TrainDataset]
 
 # Each row is a training example, each column is a feature  [X1, X2, X3]
-Xtrain=np.array(TrainDataset)
-Ytrain=np.array(TrainDatasetOutput) #expected outputs
+Xtrain=np.array(TrainDataset, dtype = float)
+Ytrain=np.array(TrainDatasetOutput, dtype = float) #expected outputs
 
 Xtest=np.array(TestDataset)
 Ytest=np.array(TestDatasetOutput)
 
+#change data tpe to float
+
 # Varibals for number of nodes
 epocs = 20000
 #array with each element being the number of nodes in each layer and the number of elements being the number of layers plus the output layer
-hiddenLayers=np.array((3,2,Ytrain.shape[1]))
+hiddenLayers=np.array((4,2,Ytrain.shape[1]))
 
 # Define useful functions
 
