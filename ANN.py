@@ -13,6 +13,7 @@ Kyle Hogg - 26/02/2020 - Make number of hidden nodes and layers as a variable.
 import numpy as np
 import csv
 
+outputId = []
 #change all output to number array of 1, 0
 def defineOutput(outputNames):
     numOfOutputs = len(set(outputNames))
@@ -72,9 +73,6 @@ def NormilizeData(data):
                 data[index][jndex] = compar / maxNum
             except:
                 pass
-
-    for i in data:
-        print(i)
     #read the csv file
 def csvReader(fname):
     with open(fname, newline='') as csvfile:
@@ -90,19 +88,34 @@ def csvReader(fname):
     for index, name in enumerate(data):
         for jndex, id in enumerate(outputId):
             data[index][4] = outputId[jndex] if data[index][4] == output[jndex] else  data[index][4]
-
     NormilizeData(data)
+    return data, outputId
 
-csvReader("IRIS.csv")
+dataset, outputId = csvReader("IRIS.csv")
+#split the data in half for training and testing
+TrainDataset = [element for index, element in enumerate(dataset) if index % 2 == 0]
+TestDataset = [element for index, element in enumerate(dataset) if index % 2 == 1]
+
+#take the outputs from these two sets
+TrainDatasetOutput = [element[-1] for element in TrainDataset]
+TestDatasetOutput = [element[-1] for element in TestDataset]
+
+#remoce the output from the traning dataset
+TrainDataset = [row[0:len(row) - 1] for row in TrainDataset]
 
 # Each row is a training example, each column is a feature  [X1, X2, X3]
-X=np.array(([0,0,1],[0,1,1],[1,0,1],[1,1,1]), dtype=float)
-y=np.array(([0,1],[1,0],[1,0],[0,1]), dtype=float) #expected outputs
+Xtrain=np.array(TrainDataset, dtype = float)
+Ytrain=np.array(TrainDatasetOutput, dtype = float) #expected outputs
+
+Xtest=np.array(TestDataset)
+Ytest=np.array(TestDatasetOutput)
+
+#change data tpe to float
 
 # Varibals for number of nodes
 epocs = 20000
 #array with each element being the number of nodes in each layer and the number of elements being the number of layers plus the output layer
-hiddenLayers=np.array((3,2,y.shape[1]))
+hiddenLayers=np.array((4,2,Ytrain.shape[1]))
 
 # Define useful functions
 
@@ -151,16 +164,15 @@ class NeuralNetwork:
         self.output = self.feedforward()
         self.backprop()
 
-
-NN = NeuralNetwork(X,y)
+NN = NeuralNetwork(Xtrain,Ytrain)
 for i in range(epocs): # trains the NN x times
 
     if i % (epocs/10) ==0:
         print ("for iteration # " + str(i) + "\n")
-        print ("Input : \n" + str(X))
-        print ("Actual Output: \n" + str(y))
+        print ("Input : \n" + str(Xtrain))
+        print ("Actual Output: \n" + str(Ytrain))
         print ("Predicted Output: \n" + str(NN.feedforward()))
-        print ("Loss: \n" + str(np.mean(np.square(y - NN.feedforward())))) # mean sum squared loss
+        print ("Loss: \n" + str(np.mean(np.square(Ytrain - NN.feedforward())))) # mean sum squared loss
         print ("\n")
 
-    NN.train(X, y)
+    NN.train(Xtrain, Ytrain)
