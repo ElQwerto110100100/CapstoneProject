@@ -9,6 +9,7 @@ Last updated on 31/03/2020
 Change log
 Kyle Hogg - 26/02/2020 - Make number of hidden nodes and layers as a variable.
 Adam Ehrke - 31/03/2020 - After each iteration, results are output to a csv
+                        - Added Accuracy Calculator, accuracy of final iteration now printed to csv
 """
 # Imports
 import numpy as np
@@ -130,6 +131,27 @@ def sigmoid(t):
 def sigmoid_derivative(p):
     return p * (1 - p)
 
+#find accuracy of training/testing
+def accuracy_calculator(predicted_output, actual_output):
+    number = len(actual_output)
+    correct = 0
+    i = 0
+    while (i < len(actual_output)):
+        index1 = 0
+        index2 = 0
+        store = float(0.0)
+        for j in range(len(actual_output[i])):
+            if (actual_output[i][j] > store):
+                index1 = j
+                store = actual_output[i][j]
+        for j in range(len(predicted_output[i])):
+            if (predicted_output[i][j] > index2):
+                index2 = j
+        if (index1 == index2):
+            correct += 1
+        i += 1
+    return correct/len(actual_output)
+
 #output results to csv
 def append_new_results(file_name, list_of_elem):
     # Open file in append mode
@@ -178,18 +200,24 @@ class NeuralNetwork:
 
 NN = NeuralNetwork(Xtest,Ytest)
 for i in range(epocs): # trains the NN x times
+    accuracy = accuracy_calculator(Ytest, NN.feedforward())
 
     if (i % (epocs/20)) ==0:
-        print ("for iteration # " + str(i) + "\n")
+        print ("For iteration # " + str(i) + "\n")
         print ("Input : \n" + str(Xtest))
         print ("Actual Output: \n" + str(Ytest))
         print ("Predicted Output: \n" + str(NN.feedforward()))
         print ("Loss: \n" + str(np.mean(np.square(Ytest - NN.feedforward())))) # mean sum squared loss
+        print ("Accuracy: \n" + str(accuracy))
         print ("\n")
         
     #data to append to csv
-    row_contents = [datetime.datetime.now(), str(i), str(np.mean(np.square(Ytrain - NN.feedforward())))]
-    #calls csv append function
-    append_new_results('results.csv', row_contents)
+    row_contents = [datetime.datetime.now(), str(i), str(accuracy)]
+    #atores row contents in an array
+    csv_contents = [row_contents]
     
     NN.train(Xtrain, Ytrain)
+    
+#calls append function to print contents
+for i in range(len(csv_contents)):
+    append_new_results('results.csv', csv_contents[i])
