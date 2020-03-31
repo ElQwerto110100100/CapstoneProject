@@ -16,13 +16,6 @@ import csv
 from csv import writer
 import datetime
 
-#change data tpe to float
-
-# Variables for number of nodes
-epocs = 20000
-#array with each element being the number of nodes in each layer and the number of elements being the number of layers plus the output layer
-hiddenLayers=np.array((10,Ytrain.shape[1]))
-
 outputId = []
 #change all output to number array of 1, 0
 def defineOutput(outputNames):
@@ -121,6 +114,11 @@ Ytrain=np.array(TrainDatasetOutput, dtype = float) #expected outputs
 
 Xtest=np.array(TestDataset, dtype = float)
 Ytest=np.array(TestDatasetOutput, dtype = float)
+
+# Variables for number of nodes
+epocs = 20000
+#array with each element being the number of nodes in each layer and the number of elements being the number of layers plus the output layer
+hiddenLayers=np.array((10,Ytrain.shape[1]))
 
 # Define useful functions
 
