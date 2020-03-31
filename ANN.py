@@ -13,6 +13,16 @@ Kyle Hogg - 26/02/2020 - Make number of hidden nodes and layers as a variable.
 import numpy as np
 import csv
 
+
+#change data tpe to float
+
+# Varibals for number of nodes
+epocs = 20000
+#array with each element being the number of nodes in each layer and the number of elements being the number of layers plus the output layer
+hiddenLayers=np.array((10,Ytrain.shape[1]))
+
+
+
 outputId = []
 #change all output to number array of 1, 0
 def defineOutput(outputNames):
@@ -102,20 +112,14 @@ TestDatasetOutput = [element[-1] for element in TestDataset]
 
 #remoce the output from the traning dataset
 TrainDataset = [row[0:len(row) - 1] for row in TrainDataset]
+TestDataset = [row[0:len(row) - 1] for row in TestDataset]
 
 # Each row is a training example, each column is a feature  [X1, X2, X3]
 Xtrain=np.array(TrainDataset, dtype = float)
 Ytrain=np.array(TrainDatasetOutput, dtype = float) #expected outputs
 
-Xtest=np.array(TestDataset)
-Ytest=np.array(TestDatasetOutput)
-
-#change data tpe to float
-
-# Varibals for number of nodes
-epocs = 20000
-#array with each element being the number of nodes in each layer and the number of elements being the number of layers plus the output layer
-hiddenLayers=np.array((4,2,Ytrain.shape[1]))
+Xtest=np.array(TestDataset, dtype = float)
+Ytest=np.array(TestDatasetOutput, dtype = float)
 
 # Define useful functions
 
@@ -164,15 +168,14 @@ class NeuralNetwork:
         self.output = self.feedforward()
         self.backprop()
 
-NN = NeuralNetwork(Xtrain,Ytrain)
+NN = NeuralNetwork(Xtest,Ytest)
 for i in range(epocs): # trains the NN x times
 
-    if i % (epocs/10) ==0:
+    if (i % (epocs/20)) ==0:
         print ("for iteration # " + str(i) + "\n")
-        print ("Input : \n" + str(Xtrain))
-        print ("Actual Output: \n" + str(Ytrain))
+        print ("Input : \n" + str(Xtest))
+        print ("Actual Output: \n" + str(Ytest))
         print ("Predicted Output: \n" + str(NN.feedforward()))
-        print ("Loss: \n" + str(np.mean(np.square(Ytrain - NN.feedforward())))) # mean sum squared loss
+        print ("Loss: \n" + str(np.mean(np.square(Ytest - NN.feedforward())))) # mean sum squared loss
         print ("\n")
-
     NN.train(Xtrain, Ytrain)
