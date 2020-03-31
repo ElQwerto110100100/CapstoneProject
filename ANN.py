@@ -5,23 +5,23 @@ Created on Tuesday Oct 2, 2018
 @author: Madhuri Suthar, PhD Candidate in Electrical and Computer Engineering, UCLA
 https://gist.github.com/jamesloyys/ff7a7bb1540384f709856f9cdcdee70d#file-neural_network_backprop-py
 
-Last updated on 21/02/2020
+Last updated on 31/03/2020
 Change log
 Kyle Hogg - 26/02/2020 - Make number of hidden nodes and layers as a variable.
+Adam Ehrke - 31/03/2020 - After each iteration, results are output to a csv
 """
 # Imports
 import numpy as np
 import csv
-
+from csv import writer
+import datetime
 
 #change data tpe to float
 
-# Varibals for number of nodes
+# Variables for number of nodes
 epocs = 20000
 #array with each element being the number of nodes in each layer and the number of elements being the number of layers plus the output layer
 hiddenLayers=np.array((10,Ytrain.shape[1]))
-
-
 
 outputId = []
 #change all output to number array of 1, 0
@@ -83,6 +83,7 @@ def NormilizeData(data):
                 data[index][jndex] = compar / maxNum
             except:
                 pass
+            
     #read the csv file
 def csvReader(fname):
     with open(fname, newline='') as csvfile:
@@ -131,6 +132,15 @@ def sigmoid(t):
 def sigmoid_derivative(p):
     return p * (1 - p)
 
+#output results to csv
+def append_new_results(file_name, list_of_elem):
+    # Open file in append mode
+    with open(file_name, 'a+', newline='') as write_obj:
+        # Create a writer object from csv module
+        csv_writer = writer(write_obj)
+        # Add contents of list as last row in the csv file
+        csv_writer.writerow(list_of_elem)
+
 # Class definition
 class NeuralNetwork:
     def __init__(self, x,y):
@@ -178,4 +188,10 @@ for i in range(epocs): # trains the NN x times
         print ("Predicted Output: \n" + str(NN.feedforward()))
         print ("Loss: \n" + str(np.mean(np.square(Ytest - NN.feedforward())))) # mean sum squared loss
         print ("\n")
+        
+    #data to append to csv
+    row_contents = [datetime.datetime.now(), str(i), str(np.mean(np.square(Ytrain - NN.feedforward())))]
+    #calls csv append function
+    append_new_results('results.csv', row_contents)
+    
     NN.train(Xtrain, Ytrain)
