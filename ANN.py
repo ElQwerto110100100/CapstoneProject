@@ -129,7 +129,7 @@ def sigmoid(t):
 
 # Derivative of sigmoid
 def sigmoid_derivative(p):
-    return p * (1 - p)
+    return p * (1 - p)*0.5
 
 #find accuracy of training/testing
 def accuracy_calculator(predicted_output, actual_output):
@@ -193,6 +193,12 @@ class NeuralNetwork:
     # #saving the weights)
         for i in range(0, len(self.weights)):
             self.weights[i] += d_weightsb[((len(self.weights)-1)-i)]
+            for j in range(0, len(self.weights[i])):
+                for k in self.weights[i][j]:
+                    if k > 3:
+                        k = 3
+                    elif k < -3:
+                        k = -3
 
     def train(self, X, y):
         self.output = self.feedforward()
