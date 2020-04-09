@@ -45,7 +45,6 @@ def NormilizeData(data):
             except:
                 #if it checks the id, ignore it
                 pass
-
     # add every number by that negative
     if minNum < 0:
         for index, listItem in enumerate(data):
@@ -55,7 +54,6 @@ def NormilizeData(data):
                     data[index][jndex] = compar - minNum
                 except:
                     pass
-
 #find largest positive number
     for listItem in data:
         for item in listItem:
@@ -82,19 +80,22 @@ def csvReader(fname):
         #spread out the data
         datasetReader = csv.reader(csvfile, delimiter=',', quotechar='|')
         data = [row for row in datasetReader]
-    output = [data[index][4] for index, name in enumerate(data)]#strip data and take only inputs
+    endPos = len(data[0])-1#goes to the end of the row
+    output = [data[index][endPos] for index, name in enumerate(data)]#strip data and take only inputs
     output = output[1:] # get ride of top labels
     output = [name for name in set(output)]#remove duplicates
     outputId = defineOutput(output)#set every output to a id
-    data = data[1:]#remove label row
+    #if the top row is filled with names remove it
+    if not (data[0][0].isdigit()):
+        data = data[1:]#remove label row
     # replace output with a output Id
     for index, name in enumerate(data):
         for jndex, id in enumerate(outputId):
-            data[index][4] = outputId[jndex] if data[index][4] == output[jndex] else  data[index][4]
+            data[index][endPos] = outputId[jndex] if data[index][endPos] == output[jndex] else data[index][endPos]
     NormilizeData(data)
     return data
 
-dataset = csvReader("IRIS.csv")
+dataset = csvReader("Test.csv")
 #split the data in half for training and testing
 TrainDataset = [element for index, element in enumerate(dataset) if index % 2 == 0]
 TestDataset = [element for index, element in enumerate(dataset) if index % 2 == 1]
