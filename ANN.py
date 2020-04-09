@@ -17,23 +17,21 @@ import csv
 from csv import writer
 import datetime
 
-outputId = []
 #change all output to number array of 1, 0
 def defineOutput(outputNames):
-    numOfOutputs = len(set(outputNames))
-    outputNames = set(outputNames)
-    outputArray = [None]*numOfOutputs
+    numOfOutputs = len(set(outputNames)) #get the number of outputs
+    outputNames = set(outputNames) #get their names
+    outputArray = [None]*numOfOutputs #put them ino an array
     for index, names in enumerate(outputNames):
-        outputArray[index] = ([0]*numOfOutputs)
+        outputArray[index] = ([0]*numOfOutputs) #this will declare how long the id needs to be
     for index, output in enumerate(outputNames):
         for jndex, zero in enumerate(outputArray):
+            #assign a '1' to a unique positon to create a unique output ID
             outputArray[index][jndex] = (1 if (index+1)/(jndex+1) == 1 else 0)
     return outputArray
 
-    #highest number (greater than 0) is use to divide the dataset
-    #if there are negative numbers add everything but the largest negative numbers
-
 def NormilizeData(data):
+    #normilizes data to work with ANN effectivly
     maxNum = 0.0
     minNum = 0.0
 
@@ -45,7 +43,7 @@ def NormilizeData(data):
                 if compar < minNum:
                     minNum = compar
             except:
-                #if it checks th id, pass
+                #if it checks the id, ignore it
                 pass
 
     # add every number by that negative
@@ -77,14 +75,14 @@ def NormilizeData(data):
                 data[index][jndex] = compar / maxNum
             except:
                 pass
-            
+
     #read the csv file
 def csvReader(fname):
     with open(fname, newline='') as csvfile:
+        #spread out the data
         datasetReader = csv.reader(csvfile, delimiter=',', quotechar='|')
         data = [row for row in datasetReader]
-    #strip data
-    output = [data[index][4] for index, name in enumerate(data)]
+    output = [data[index][4] for index, name in enumerate(data)]#strip data and take only inputs
     output = output[1:] # get ride of top labels
     output = [name for name in set(output)]#remove duplicates
     outputId = defineOutput(output)#set every output to a id
@@ -94,9 +92,9 @@ def csvReader(fname):
         for jndex, id in enumerate(outputId):
             data[index][4] = outputId[jndex] if data[index][4] == output[jndex] else  data[index][4]
     NormilizeData(data)
-    return data, outputId
+    return data
 
-dataset, outputId = csvReader("IRIS.csv")
+dataset = csvReader("IRIS.csv")
 #split the data in half for training and testing
 TrainDataset = [element for index, element in enumerate(dataset) if index % 2 == 0]
 TestDataset = [element for index, element in enumerate(dataset) if index % 2 == 1]
@@ -120,8 +118,6 @@ Ytest=np.array(TestDatasetOutput, dtype = float)
 epocs = 20000
 #array with each element being the number of nodes in each layer and the number of elements being the number of layers plus the output layer
 hiddenLayers=np.array((10,Ytrain.shape[1]))
-
-# Define useful functions
 
 # Activation function
 def sigmoid(t):
@@ -210,14 +206,14 @@ for i in range(epocs): # trains the NN x times
         print ("Loss: \n" + str(np.mean(np.square(Ytest - NN.feedforward())))) # mean sum squared loss
         print ("Accuracy: \n" + str(accuracy))
         print ("\n")
-        
+
     #data to append to csv
     row_contents = [datetime.datetime.now(), str(i), str(accuracy)]
     #atores row contents in an array
     csv_contents = [row_contents]
-    
+
     NN.train(Xtrain, Ytrain)
-    
+
 #calls append function to print contents
 for i in range(len(csv_contents)):
     append_new_results('results.csv', csv_contents[i])
