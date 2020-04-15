@@ -10,6 +10,7 @@ Change log
 Kyle Hogg - 26/02/2020 - Make number of hidden nodes and layers as a variable.
 Adam Ehrke - 31/03/2020 - After each iteration, results are output to a csv
                         - Added Accuracy Calculator, accuracy of final iteration now printed to csv
+           - 15/04/2020 - Accuracy of each run is now output to csv
 """
 # Imports
 import numpy as np
@@ -202,6 +203,7 @@ class NeuralNetwork:
         self.backprop()
 
 NN = NeuralNetwork(Xtest,Ytest)
+csv_contents = [] #creates new list to store accuracy
 for i in range(epocs): # trains the NN x times
     accuracy = accuracy_calculator(Ytest, NN.feedforward())
 
@@ -216,8 +218,8 @@ for i in range(epocs): # trains the NN x times
 
     #data to append to csv
     row_contents = [datetime.datetime.now(), str(i), str(accuracy)]
-    #atores row contents in an array
-    csv_contents = [row_contents]
+    #stores row contents in a list
+    csv_contents.append(row_contents)
 
     NN.train(Xtrain, Ytrain)
 
