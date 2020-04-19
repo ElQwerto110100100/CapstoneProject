@@ -1,0 +1,11 @@
+IRIS = 1.967586526
+Abalone = 0.716123385
+cancer = 
+card = 
+mnist_train = 
+
+dermatology = 6.825078281
+diabetes = 0.504218537
+heart = 0.453035414
+thyroid = 0.424927121
+weedseed = 2.199247102
