@@ -1,0 +1,282 @@
+------------------ Start Analysis ------------------ 
+1 (I-8-O)\run 1\abalone.csv
+peak accuracy: 0.3544061302681992 at epochs: 1
+1 (I-8-O)\run 1\Cancer.csv
+peak accuracy: 0.5366568914956011 at epochs: 1
+1 (I-8-O)\run 1\Card.csv
+peak accuracy: 0.5594202898550724 at epochs: 601
+1 (I-8-O)\run 1\Dermatology.csv
+peak accuracy: 0.43575418994413406 at epochs: 1801
+1 (I-8-O)\run 1\Diabetes.csv
+peak accuracy: 0.6328125 at epochs: 1
+1 (I-8-O)\run 1\Heart.csv
+peak accuracy: 0.4434782608695652 at epochs: 1
+1 (I-8-O)\run 1\Iris.csv
+peak accuracy: 0.9866666666666667 at epochs: 15001
+1 (I-8-O)\run 2\abalone.csv
+peak accuracy: 0.34434865900383144 at epochs: 1
+1 (I-8-O)\run 2\Cancer.csv
+peak accuracy: 0.5366568914956011 at epochs: 1
+1 (I-8-O)\run 2\Card.csv
+peak accuracy: 0.4405797101449275 at epochs: 1
+1 (I-8-O)\run 2\Dermatology.csv
+peak accuracy: 0.29608938547486036 at epochs: 3601
+1 (I-8-O)\run 2\Diabetes.csv
+peak accuracy: 0.6328125 at epochs: 601
+1 (I-8-O)\run 2\Heart.csv
+peak accuracy: 0.5565217391304348 at epochs: 21001
+1 (I-8-O)\run 2\Iris.csv
+peak accuracy: 0.9866666666666667 at epochs: 12001
+1 (I-8-O)\run 3\abalone.csv
+peak accuracy: 0.32567049808429116 at epochs: 1201
+1 (I-8-O)\run 3\Cancer.csv
+peak accuracy: 0.5366568914956011 at epochs: 601
+1 (I-8-O)\run 3\Card.csv
+peak accuracy: 0.5594202898550724 at epochs: 601
+1 (I-8-O)\run 3\Dermatology.csv
+peak accuracy: 0.20670391061452514 at epochs: 1
+1 (I-8-O)\run 3\Diabetes.csv
+peak accuracy: 0.6328125 at epochs: 601
+1 (I-8-O)\run 3\Heart.csv
+peak accuracy: 0.5565217391304348 at epochs: 1
+1 (I-8-O)\run 3\Iris.csv
+peak accuracy: 0.9866666666666667 at epochs: 13201
+1 (I-8-O)\run 4\abalone.csv
+peak accuracy: 0.34434865900383144 at epochs: 601
+1 (I-8-O)\run 4\Cancer.csv
+peak accuracy: 0.5366568914956011 at epochs: 1
+1 (I-8-O)\run 4\Card.csv
+peak accuracy: 0.5594202898550724 at epochs: 601
+1 (I-8-O)\run 4\Dermatology.csv
+peak accuracy: 0.22905027932960895 at epochs: 1
+1 (I-8-O)\run 4\Diabetes.csv
+peak accuracy: 0.6328125 at epochs: 1
+1 (I-8-O)\run 4\Heart.csv
+peak accuracy: 0.5565217391304348 at epochs: 601
+1 (I-8-O)\run 4\Iris.csv
+peak accuracy: 0.9866666666666667 at epochs: 12001
+1 (I-8-O)\run 5\abalone.csv
+peak accuracy: 0.34434865900383144 at epochs: 1
+1 (I-8-O)\run 5\Cancer.csv
+peak accuracy: 0.5366568914956011 at epochs: 601
+1 (I-8-O)\run 5\Card.csv
+peak accuracy: 0.4405797101449275 at epochs: 1
+1 (I-8-O)\run 5\Dermatology.csv
+peak accuracy: 0.22905027932960895 at epochs: 9001
+1 (I-8-O)\run 5\Diabetes.csv
+peak accuracy: 0.6328125 at epochs: 1
+1 (I-8-O)\run 5\Heart.csv
+peak accuracy: 0.4434782608695652 at epochs: 1
+1 (I-8-O)\run 5\Iris.csv
+peak accuracy: 0.9866666666666667 at epochs: 9001
+2 (I-14-O)\run1\abalone.csv
+peak accuracy: 0.3692528735632184 at epochs: 6001
+2 (I-14-O)\run1\Cancer.csv
+peak accuracy: 0.4633431085043988 at epochs: 1
+2 (I-14-O)\run1\Card.csv
+peak accuracy: 0.5594202898550724 at epochs: 1
+2 (I-14-O)\run1\Dermatology.csv
+peak accuracy: 0.22905027932960895 at epochs: 1
+2 (I-14-O)\run1\Diabetes.csv
+peak accuracy: 0.6328125 at epochs: 1
+2 (I-14-O)\run1\Heart.csv
+peak accuracy: 0.5565217391304348 at epochs: 1
+2 (I-14-O)\run1\Iris.csv
+peak accuracy: 0.96 at epochs: 108001
+2 (I-14-O)\run2\abalone.csv
+peak accuracy: 0.34434865900383144 at epochs: 1
+2 (I-14-O)\run2\Cancer.csv
+peak accuracy: 0.5630498533724341 at epochs: 1
+2 (I-14-O)\run2\Card.csv
+peak accuracy: 0.5594202898550724 at epochs: 1
+2 (I-14-O)\run2\Dermatology.csv
+peak accuracy: 0.2849162011173184 at epochs: 90001
+2 (I-14-O)\run2\Diabetes.csv
+peak accuracy: 0.3671875 at epochs: 1
+2 (I-14-O)\run2\Heart.csv
+peak accuracy: 0.5565217391304348 at epochs: 1
+2 (I-14-O)\run2\Iris.csv
+peak accuracy: 0.7066666666666667 at epochs: 12001
+2 (I-14-O)\run3\abalone.csv
+peak accuracy: 0.33237547892720304 at epochs: 1
+2 (I-14-O)\run3\Cancer.csv
+peak accuracy: 0.4633431085043988 at epochs: 1
+2 (I-14-O)\run3\Card.csv
+peak accuracy: 0.5594202898550724 at epochs: 1
+2 (I-14-O)\run3\Dermatology.csv
+peak accuracy: 0.2849162011173184 at epochs: 6001
+2 (I-14-O)\run3\Diabetes.csv
+peak accuracy: 0.6328125 at epochs: 6001
+2 (I-14-O)\run3\Heart.csv
+peak accuracy: 0.4434782608695652 at epochs: 1
+2 (I-14-O)\run3\Iris.csv
+peak accuracy: 0.6933333333333334 at epochs: 84001
+2 (I-14-O)\run4\abalone.csv
+peak accuracy: 0.34434865900383144 at epochs: 6001
+2 (I-14-O)\run4\Cancer.csv
+peak accuracy: 0.5366568914956011 at epochs: 1
+2 (I-14-O)\run4\Card.csv
+peak accuracy: 0.4405797101449275 at epochs: 1
+2 (I-14-O)\run4\Dermatology.csv
+peak accuracy: 0.22905027932960895 at epochs: 1
+2 (I-14-O)\run4\Diabetes.csv
+peak accuracy: 0.6328125 at epochs: 6001
+2 (I-14-O)\run4\Heart.csv
+peak accuracy: 0.5565217391304348 at epochs: 6001
+2 (I-14-O)\run4\Iris.csv
+peak accuracy: 1.0 at epochs: 42001
+2 (I-14-O)\run5\abalone.csv
+peak accuracy: 0.33237547892720304 at epochs: 1
+2 (I-14-O)\run5\Cancer.csv
+peak accuracy: 0.5366568914956011 at epochs: 1
+2 (I-14-O)\run5\Card.csv
+peak accuracy: 0.5594202898550724 at epochs: 6001
+2 (I-14-O)\run5\Dermatology.csv
+peak accuracy: 0.2849162011173184 at epochs: 6001
+2 (I-14-O)\run5\Diabetes.csv
+peak accuracy: 0.6328125 at epochs: 1
+2 (I-14-O)\run5\Heart.csv
+peak accuracy: 0.5565217391304348 at epochs: 1
+2 (I-14-O)\run5\Iris.csv
+peak accuracy: 0.36 at epochs: 1
+3 (I-4-4-O)\run1\abalone.csv
+peak accuracy: 0.34434865900383144 at epochs: 1
+3 (I-4-4-O)\run1\Cancer.csv
+peak accuracy: 0.5366568914956011 at epochs: 6001
+3 (I-4-4-O)\run1\Card.csv
+peak accuracy: 0.5594202898550724 at epochs: 1
+3 (I-4-4-O)\run1\Dermatology.csv
+peak accuracy: 0.49162011173184356 at epochs: 372001
+3 (I-4-4-O)\run1\Diabetes.csv
+peak accuracy: 0.6328125 at epochs: 6001
+3 (I-4-4-O)\run1\Heart.csv
+peak accuracy: 0.5565217391304348 at epochs: 6001
+3 (I-4-4-O)\run1\Iris.csv
+peak accuracy: 0.96 at epochs: 108001
+3 (I-4-4-O)\run2\abalone.csv
+peak accuracy: 0.33237547892720304 at epochs: 1
+3 (I-4-4-O)\run2\Cancer.csv
+peak accuracy: 0.5366568914956011 at epochs: 6001
+3 (I-4-4-O)\run2\Card.csv
+peak accuracy: 0.5594202898550724 at epochs: 1
+3 (I-4-4-O)\run2\Dermatology.csv
+peak accuracy: 0.22905027932960895 at epochs: 6001
+3 (I-4-4-O)\run2\Diabetes.csv
+peak accuracy: 0.6328125 at epochs: 6001
+3 (I-4-4-O)\run2\Heart.csv
+peak accuracy: 0.5565217391304348 at epochs: 6001
+3 (I-4-4-O)\run2\Iris.csv
+peak accuracy: 0.9866666666666667 at epochs: 30001
+3 (I-4-4-O)\run3\abalone.csv
+peak accuracy: 0.3232758620689655 at epochs: 1
+3 (I-4-4-O)\run3\Cancer.csv
+peak accuracy: 0.5366568914956011 at epochs: 6001
+3 (I-4-4-O)\run3\Card.csv
+peak accuracy: 0.5594202898550724 at epochs: 1
+3 (I-4-4-O)\run3\Dermatology.csv
+peak accuracy: 0.22905027932960895 at epochs: 1
+3 (I-4-4-O)\run3\Diabetes.csv
+peak accuracy: 0.6328125 at epochs: 6001
+3 (I-4-4-O)\run3\Heart.csv
+peak accuracy: 0.5565217391304348 at epochs: 1
+3 (I-4-4-O)\run3\Iris.csv
+peak accuracy: 0.8933333333333333 at epochs: 6001
+3 (I-4-4-O)\run4\abalone.csv
+peak accuracy: 0.33237547892720304 at epochs: 1
+3 (I-4-4-O)\run4\Cancer.csv
+peak accuracy: 0.4633431085043988 at epochs: 1
+3 (I-4-4-O)\run4\Card.csv
+peak accuracy: 0.5594202898550724 at epochs: 1
+3 (I-4-4-O)\run4\Dermatology.csv
+peak accuracy: 0.4134078212290503 at epochs: 498001
+3 (I-4-4-O)\run4\Diabetes.csv
+peak accuracy: 0.6328125 at epochs: 1
+3 (I-4-4-O)\run4\Heart.csv
+peak accuracy: 0.5565217391304348 at epochs: 1
+3 (I-4-4-O)\run4\Iris.csv
+peak accuracy: 0.9333333333333333 at epochs: 12001
+3 (I-4-4-O)\run5\abalone.csv
+peak accuracy: 0.34434865900383144 at epochs: 1
+3 (I-4-4-O)\run5\Cancer.csv
+peak accuracy: 0.5366568914956011 at epochs: 1
+3 (I-4-4-O)\run5\Card.csv
+peak accuracy: 0.5594202898550724 at epochs: 1
+3 (I-4-4-O)\run5\Dermatology.csv
+peak accuracy: 0.3854748603351955 at epochs: 108001
+3 (I-4-4-O)\run5\Diabetes.csv
+peak accuracy: 0.6328125 at epochs: 6001
+3 (I-4-4-O)\run5\Heart.csv
+peak accuracy: 0.5565217391304348 at epochs: 1
+3 (I-4-4-O)\run5\Iris.csv
+peak accuracy: 0.88 at epochs: 6001
+4 (I-2-6-O)\run1\abalone.csv
+peak accuracy: 0.33237547892720304 at epochs: 1
+4 (I-2-6-O)\run1\Cancer.csv
+peak accuracy: 0.5366568914956011 at epochs: 1
+4 (I-2-6-O)\run1\Card.csv
+peak accuracy: 0.5594202898550724 at epochs: 6001
+4 (I-2-6-O)\run1\Dermatology.csv
+peak accuracy: 0.05027932960893855 at epochs: 1
+4 (I-2-6-O)\run1\Diabetes.csv
+peak accuracy: 0.6328125 at epochs: 6001
+4 (I-2-6-O)\run1\Heart.csv
+peak accuracy: 0.5565217391304348 at epochs: 1
+4 (I-2-6-O)\run1\Iris.csv
+peak accuracy: 0.8933333333333333 at epochs: 12001
+4 (I-2-6-O)\run2\abalone.csv
+peak accuracy: 0.33237547892720304 at epochs: 1
+4 (I-2-6-O)\run2\Cancer.csv
+peak accuracy: 0.5366568914956011 at epochs: 6001
+4 (I-2-6-O)\run2\Card.csv
+peak accuracy: 0.5594202898550724 at epochs: 6001
+4 (I-2-6-O)\run2\Dermatology.csv
+peak accuracy: 0.1005586592178771 at epochs: 1
+4 (I-2-6-O)\run2\Diabetes.csv
+peak accuracy: 0.6328125 at epochs: 1
+4 (I-2-6-O)\run2\Heart.csv
+peak accuracy: 0.5565217391304348 at epochs: 6001
+4 (I-2-6-O)\run2\Iris.csv
+peak accuracy: 0.8533333333333334 at epochs: 216001
+4 (I-2-6-O)\run3\abalone.csv
+peak accuracy: 0.34434865900383144 at epochs: 1
+4 (I-2-6-O)\run3\Cancer.csv
+peak accuracy: 0.5366568914956011 at epochs: 1
+4 (I-2-6-O)\run3\Card.csv
+peak accuracy: 0.5594202898550724 at epochs: 1
+4 (I-2-6-O)\run3\Dermatology.csv
+peak accuracy: 0.22905027932960895 at epochs: 24001
+4 (I-2-6-O)\run3\Diabetes.csv
+peak accuracy: 0.6328125 at epochs: 1
+4 (I-2-6-O)\run3\Heart.csv
+peak accuracy: 0.4434782608695652 at epochs: 1
+4 (I-2-6-O)\run3\Iris.csv
+peak accuracy: 0.96 at epochs: 138001
+4 (I-2-6-O)\run4\abalone.csv
+peak accuracy: 0.33237547892720304 at epochs: 1
+4 (I-2-6-O)\run4\Cancer.csv
+peak accuracy: 0.5366568914956011 at epochs: 1
+4 (I-2-6-O)\run4\Card.csv
+peak accuracy: 0.5594202898550724 at epochs: 1
+4 (I-2-6-O)\run4\Dermatology.csv
+peak accuracy: 0.22905027932960895 at epochs: 6001
+4 (I-2-6-O)\run4\Diabetes.csv
+peak accuracy: 0.6328125 at epochs: 1
+4 (I-2-6-O)\run4\Heart.csv
+peak accuracy: 0.8913043478260869 at epochs: 384001
+4 (I-2-6-O)\run4\Iris.csv
+peak accuracy: 0.8266666666666667 at epochs: 12001
+4 (I-2-6-O)\run5\abalone.csv
+peak accuracy: 0.33237547892720304 at epochs: 1
+4 (I-2-6-O)\run5\Cancer.csv
+peak accuracy: 0.5366568914956011 at epochs: 1
+4 (I-2-6-O)\run5\Card.csv
+peak accuracy: 0.5594202898550724 at epochs: 1
+4 (I-2-6-O)\run5\Dermatology.csv
+peak accuracy: 0.2849162011173184 at epochs: 474001
+4 (I-2-6-O)\run5\Diabetes.csv
+peak accuracy: 0.6328125 at epochs: 6001
+4 (I-2-6-O)\run5\Heart.csv
+peak accuracy: 0.5565217391304348 at epochs: 6001
+4 (I-2-6-O)\run5\Iris.csv
+peak accuracy: 0.8933333333333333 at epochs: 6001
+------------------ End Analysis ------------------ 
