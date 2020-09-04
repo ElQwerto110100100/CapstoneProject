@@ -1,4 +1,5 @@
 import csv
+import os
 
 def csvReader(fname):
     with open(fname, newline='') as csvfile:
@@ -14,7 +15,6 @@ def findPeak(data):
         for epoch, acc in enumerate(item):
             
             try:
-                print(epoch, acc)
                 if float(acc) > float(peakAcc):
                     peakAcc = acc
                     peakEpoch = epoch
@@ -22,4 +22,15 @@ def findPeak(data):
                 pass
     print("peak accuracy: " + str(peakAcc) + " at epochs: " + str(peakEpoch))
 
-findPeak(csvReader("Iris.csv"))
+print("------------------ Start Analysis ------------------ ")
+
+path = r'C:\Users\joshy\Desktop\Github\CapstoneProject\data'
+for subdir, dirs, files in os.walk(path):
+    for filename in files:
+        filepath = subdir + os.sep + filename
+
+        if filepath.endswith(".csv"):
+            print (filepath.strip(path))
+            findPeak(csvReader(filepath))
+
+print("------------------ End Analysis ------------------ ")
